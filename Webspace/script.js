@@ -17,6 +17,15 @@
  // Animation GSAP pour le logo
  gsap.fromTo("#logo", { rotationY: 1440 }, { rotationY: 0, duration: 1.5 });
 
+ // Animation de rebond pour le logo
+gsap.to("#logo", {
+    y: -20,
+    duration: 0.8,
+    ease: "bounce.out",
+    repeat: -1,
+    yoyo: true
+});
+
  // Animation pour les sous-services
  const services = document.querySelectorAll('.service');
 
