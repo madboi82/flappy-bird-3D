@@ -33,9 +33,15 @@
             border-radius: 5px; /* Coins arrondis */
         }
 
-        
+        #confirmation-message p {
+    margin-top: 10px;
+        }
 
-        
+        #paper-plane {
+    opacity: 0;
+    transform: translateY(-20px); /* Position initiale pour l’animation */
+        }
+  
     </style>
 </head>
 <body>
@@ -151,6 +157,10 @@
                 <textarea class="w-full mb-3 p-2 rounded" name="message" placeholder="Votre message" required></textarea>
                 <button class="w-full bg-pink-500 text-white p-2 rounded hover:bg-pink-600" type="submit">Envoyer</button>
             </form>
+            <div id="confirmation-message" class="hidden text-pink-400 text-center mt-4">
+                <p>Merci pour votre message ! Nous vous répondrons sous peu.</p>
+                <img id="paper-plane" src="images/envoyer (1).png" alt="Avion en papier" class="w-12 h-12 mx-auto opacity-0">
+            </div>
         </section>
            
            <!-- Flèche de retour en haut -->

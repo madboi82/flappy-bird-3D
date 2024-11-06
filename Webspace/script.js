@@ -1,6 +1,4 @@
-
-
- // Script pour le menu hamburger
+// Script pour le menu hamburger
  const menuToggle = document.getElementById("menu-toggle");
  const navbar = document.getElementById("navbar");
 
@@ -60,3 +58,42 @@ window.addEventListener("scroll", () => {
 scrollToTopButton.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
+// Sélectionne le formulaire, le message de confirmation, et l'icône de l'avion en papier
+const form = document.querySelector('#nous-contacter form');
+const confirmationMessage = document.getElementById('confirmation-message');
+const paperPlane = document.getElementById('paper-plane');
+
+// Intercepte la soumission du formulaire
+form.addEventListener('submit', function (event) {
+    event.preventDefault(); // Empêche l'envoi réel du formulaire et le rechargement de la page
+    
+    // Affiche le message de confirmation
+    confirmationMessage.classList.remove('hidden');
+
+    // Animation pour faire décoller le paper plane avec effet de battement d'ailes
+gsap.fromTo(
+    "#paper-plane",
+    { opacity: 1, x: 0, y: 0, rotation: 0 }, // Position et orientation de départ
+    {
+        opacity: 0,                       // Disparition progressive
+        x: 300,                            // Déplacement vers la droite
+        y: -400,                          // Décollage vers le haut
+        rotation: 20,                     // Angle initial pour simuler le battement d’ailes
+        duration: 5,                    // Durée totale de l'animation
+        ease: "power6.out",               // Courbe d’animation pour l'effet de décollage naturel
+        onUpdate: function () {           // Fonction pour créer le battement d’ailes
+            const rotationDirection = Math.sin(gsap.globalTimeline.time() * 10) * 5; // Ajuste la fréquence et amplitude
+            gsap.set("#paper-plane", { rotation: rotationDirection });
+        }
+    }
+);
+
+
+
+    // Cache le message après quelques secondes
+    setTimeout(() => {
+        confirmationMessage.classList.add('hidden');
+    }, 5000);
+});
+
